@@ -52,7 +52,7 @@ If you'd like to initilize an empty app:
 Important notices:
 ---
 
-Your nginx listens on port you specify as NGINX_PORT (8081 in this example).
+In this container your nginx listens on port you specified as NGINX_PORT (8081 in this example) in .env file.
 MySQL listens for external connections on port specified in MYSQL_PORT (13306 in this example), but internal connections should be established to host 'mysql' on standart port (3306).
 Php-fpm ports are not mapped externally.
 
