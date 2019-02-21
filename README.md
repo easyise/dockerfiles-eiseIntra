@@ -34,7 +34,7 @@ MYSQL_PASSWORD=your_gorgeous_app_db_password
 
 5. Run docker daemon, then run docker-compose: `docker-compose --build up -d`
 
-6. Run init.sh, it will initialize your app from github repos.
+6. Run init.sh, it will initialize your app from github repos: `./init.sh your_gorgeous_app_dir`
 
 7. Then open your browser and navigate to `http://localhost:8081/your_gorgeous_app_dir/vendor/eiseIntra/admin/`
 
@@ -43,3 +43,5 @@ MYSQL_PASSWORD=your_gorgeous_app_db_password
 9. Choose database 'your_gorgeous_app_db'
 
 10. Click 'Apply eiseIntra' button. Specify login and password for web user. Click Apply.
+
+11. Logon to your app with this URL:  `http://localhost:8081/your_gorgeous_app_dir/`
