@@ -56,7 +56,7 @@ Your nginx listens on port you specify as NGINX_PORT (8081 in this example).
 MySQL listens for external connections on port specified in MYSQL_PORT (13306 in this example), but internal connections should be established to host 'mysql' on standart port (3306).
 Php-fpm ports are not mapped externally.
 
-If you'd like to make your app accessible on standard port (80) you can use nginx proxy, e.g.:
+If you'd like to make your app accessible on standard HTTPS port (443) you can use nginx as proxy, e.g.:
 ```
 server {
     listen 443 ssl;
