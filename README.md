@@ -32,7 +32,10 @@ MYSQL_USER=your_gorgeous_app_db_user
 MYSQL_PASSWORD=your_gorgeous_app_db_password
 ```
 
-5. Run docker daemon, then run docker-compose: `docker-compose --build up -d`
+5. Run docker daemon, then run docker-compose: `docker-compose up --build -d`
+
+If you'd like to initilize an empty app:
+---
 
 6. Run init.sh, it will initialize your app from github repos: `./init.sh your_gorgeous_app_dir`
 
@@ -45,3 +48,26 @@ MYSQL_PASSWORD=your_gorgeous_app_db_password
 10. Click 'Apply eiseIntra' button. Specify login and password for web user. Click Apply.
 
 11. Logon to your app with this URL:  `http://localhost:8081/your_gorgeous_app_dir/`
+
+Important notices:
+---
+
+Your nginx listens on port you specify as NGINX_PORT (8081 in this example).
+MySQL listens for external connections on port specified in MYSQL_PORT (13306 in this example), but internal connections should be established to host 'mysql' on standart port (3306).
+Php-fpm ports are not mapped externally.
+
+If you'd like to make your app accessible on standard port (80) you can use nginx proxy, e.g.:
+```
+server {
+    listen 443 ssl;
+
+    server_name A.local;
+
+    ssl_certificate ...;
+    ssl_certificate_key ...;
+
+    location / {
+        proxy_pass http://127.0.0.1:8081;
+    }
+}
+```
