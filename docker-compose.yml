@@ -1,0 +1,64 @@
+# Пропишем версию
+version: '3'
+# Перечислим сервисы
+services:
+
+    nginx:
+        image: nginx:latest
+        container_name: nginx
+        ports:
+            - "${NGINX_PORT}:80"
+        volumes:
+            - ./etc/nginx:/etc/nginx/conf.d
+            - ../logs:/var/log/nginx
+            - ../htdocs:/var/www
+
+        links:
+            - php
+
+    mysql:
+
+        image: mariadb:latest
+
+        ports:
+            - "${MYSQL_PORT}:3306"
+
+        container_name: mysql
+
+        environment:
+
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+        restart: unless-stopped
+
+        volumes:
+            - ./etc/mysql:/etc/mysql
+            - ../mysql:/var/lib/mysql
+            - ../logs:/var/log/
+
+
+    php:
+
+        build: ./etc/php
+
+        container_name: php-fpm
+
+        environment:
+              DB_HOST: ${MYSQL_HOST}
+              DB_DATABASE: ${MYSQL_DATABASE}
+              DB_USERNAME: ${MYSQL_USER}
+              DB_PASSWORD: ${MYSQL_PASSWORD}
+
+        volumes:
+            - ../htdocs:/var/www
+
+        restart: unless-stopped
+
+        links:
+            - mysql
+
+
+
