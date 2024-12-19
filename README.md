@@ -69,7 +69,13 @@ server {
     ssl_certificate_key ...;
 
     location / {
+        proxy_set_header Host $http_host;
+        server_name_in_redirect off;
+        proxy_redirect off;
         proxy_pass http://127.0.0.1:8081;
+        proxy_buffering off;
+        gzip off;
     }
+
 }
 ```
