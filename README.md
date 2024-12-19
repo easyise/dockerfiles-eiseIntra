@@ -22,14 +22,16 @@ All remaining directories will be created by docker automatically.
 4. Edit '.env_template' file and save it as '.env', correctly specify your envoronment variables (do NOT change MYSQL_HOST value):
 
 ```
+COMPOSE_PROJECT_NAME=project_mydomain_com
+PROJECT_TZ=Europe/London
 PROJECT_DIR=your_gorgeous_app_dir
 MYSQL_HOST=mysql
-MYSQL_ROOT_PASSWORD=your_mysql_pass
+MYSQL_ROOT_PASSWORD=Y0urR00TMysqLPa$$
 MYSQL_DATABASE=your_gorgeous_app_db
 MYSQL_PORT=13306
 NGINX_PORT=8081
 MYSQL_USER=your_gorgeous_app_db_user
-MYSQL_PASSWORD=your_gorgeous_app_db_password
+MYSQL_PASSWORD=Y0urU$ERMysqLPa$$
 ```
 
 5. Run docker daemon, then run docker-compose: `docker-compose up --build -d`

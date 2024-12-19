@@ -1,17 +1,25 @@
 # Пропишем версию
 version: '3'
+
+
 # Перечислим сервисы
 services:
 
     nginx:
         image: nginx:latest
         container_name: nginx
+
+        environment:
+            - TZ=${PROJECT_TZ}
+
         ports:
             - "${NGINX_PORT}:80"
         volumes:
             - ./etc/nginx:/etc/nginx/conf.d
             - ../logs:/var/log/nginx
             - ../htdocs:/var/www
+
+        restart: unless-stopped
 
         links:
             - php
@@ -26,7 +34,7 @@ services:
         container_name: mysql
 
         environment:
-
+            - TZ=${PROJECT_TZ}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - MYSQL_USER=${MYSQL_USER}
@@ -50,7 +58,11 @@ services:
               DB_HOST: ${MYSQL_HOST}
               DB_DATABASE: ${MYSQL_DATABASE}
               DB_USERNAME: ${MYSQL_USER}
-              DB_PASSWORD: ${MYSQL_PASSWORD}
+              DB_PASSWORD: ${MYSQL_PASSWORD}    
+              TZ=${PROJECT_TZ}
+
+        # extra_hosts:
+        #     - "intranet.mydomain.com:172.18.74.8"
 
         volumes:
             - ../htdocs:/var/www
