@@ -34,14 +34,14 @@ MYSQL_USER=your_gorgeous_app_db_user
 MYSQL_PASSWORD=Y0urU$ERMysqLPa$$
 ```
 
-5. Run docker daemon, then run docker-compose: `docker-compose up --build -d`
+5. Run docker daemon, then run docker-compose: `docker compose up --build -d`
 
 If you'd like to initilize an empty app:
 ---
 
 6. Run init.sh, it will initialize your app from github repos: `./init_app.sh your_gorgeous_app_dir`
 
-7. Then open your browser and navigate to `http://localhost:8081/your_gorgeous_app_dir/vendor/eiseIntra/admin/`
+7. Then open your browser and navigate to `http://localhost:8081/vendor/eiseIntra/admin/`
 
 8. Specify host name 'mysql', login - 'root' and the password you specified as MYSQL_ROOT_PASSWORD in .env file.
 
