@@ -1,8 +1,14 @@
-#!/bin/sh -x
+#!/bin/sh
+# Usage: init_app.sh <project_name>
 PROJECT="$1"
+if [ -z "$PROJECT" ]; then
+    echo "Usage: $0 <project_name>"
+    exit 1
+fi
 mkdir ../htdocs/$PROJECT
 cd ../htdocs/
-mkdir common
+mkdir vendor
+git init .
 git submodule add https://github.com/easyise/eiseIntra vendor/eiseIntra
 git submodule add https://github.com/easyise/eiseXLSX vendor/eiseXLSX
 git submodule add https://github.com/easyise/eiseMail vendor/eiseMail
