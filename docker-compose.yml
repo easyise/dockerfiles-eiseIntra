@@ -7,7 +7,7 @@ services:
 
     nginx:
         image: nginx:latest
-        container_name: nginx
+        container_name: nginx-${COMPOSE_PROJECT_NAME}
 
         environment:
             - TZ=${PROJECT_TZ}
@@ -31,7 +31,7 @@ services:
         ports:
             - "${MYSQL_PORT}:3306"
 
-        container_name: mysql
+        container_name: mysql-${COMPOSE_PROJECT_NAME}
 
         environment:
             - TZ=${PROJECT_TZ}
@@ -52,14 +52,14 @@ services:
 
         build: ./etc/php
 
-        container_name: php-fpm
+        container_name: php-fpm-${COMPOSE_PROJECT_NAME}
 
         environment:
               DB_HOST: ${MYSQL_HOST}
               DB_DATABASE: ${MYSQL_DATABASE}
               DB_USERNAME: ${MYSQL_USER}
               DB_PASSWORD: ${MYSQL_PASSWORD}    
-              TZ=${PROJECT_TZ}
+              TZ: ${PROJECT_TZ}
 
         # extra_hosts:
         #     - "intranet.mydomain.com:172.18.74.8"

@@ -39,7 +39,7 @@ MYSQL_PASSWORD=Y0urU$ERMysqLPa$$
 If you'd like to initilize an empty app:
 ---
 
-6. Run init.sh, it will initialize your app from github repos: `./init.sh your_gorgeous_app_dir`
+6. Run init.sh, it will initialize your app from github repos: `./init_app.sh your_gorgeous_app_dir`
 
 7. Then open your browser and navigate to `http://localhost:8081/your_gorgeous_app_dir/vendor/eiseIntra/admin/`
 
