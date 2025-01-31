@@ -66,6 +66,7 @@ services:
 
         volumes:
             - ../htdocs:/var/www
+            - ../uploads:/mnt/uploads
 
         restart: unless-stopped
 
